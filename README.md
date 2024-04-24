@@ -1,4 +1,4 @@
-![image](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/19c2004b-2d31-4cd6-9630-6bdc9dfbd55a)# DBMS-Expt03
+# DBMS-Expt03
 
 ## Aim
 To learn and practice the uses of Update , Delete and Select in SQL.
