@@ -3,10 +3,51 @@
 ## Aim
 To learn and practice the uses of Update , Delete and Select in SQL.
 
+## Theory
+1. INSERT INTO: This is used to add records into a relation. 
+
+These are three type of INSERT INTO queries which are as 
+
+a) Inserting a single record 
+
+Syntax:
+ INSERT INTO < relation/table name> (field_1,field_2……field_n)VALUES (data_1,data_2, ...... data_n);student(sno,sname,class,address)VALUES (1,’Ravi’,’M.Tech’,’Palakol’); 
+
+ b) Inserting all records from another relation
+
+Syntax:
+ INSERT INTO relation_name_1 SELECT Field_1,field_2,field_n FROM relation_name_2 WHERE field_x=data;
+
+ c) Inserting multiple records 
+
+Syntax: INSERT INTO relation_name field_1,field_2, ....field_n) VALUES (&data_1,&data_2,.......&data_n); 
+
+
+2. UPDATE-SET-WHERE: 
+This is used to update the content of a record in a relation. 
+
+Syntax:
+ SQL>UPDATE relation name SET Field_name1=data,field_name2=data, WHERE field_name=data; Example: SQL>UPDATE student SET sname = ‘kumar’ WHERE sno=1; 
+
+
+3. DELETE-FROM: This is used to delete all the records of a relation but it will retain the structure of that relation. 
+
+a) DELETE-FROM: This is used to delete all the records of relation. 
+Syntax: DELETE FROM relation_name;
+
+b) DELETE -FROM-WHERE: This is used to delete a selected record from a relation. 
+Syntax:DELETE FROM relation_name WHERE condition; 
+
+
+4)SELECT FROM: To display a set of fields for all records of relation
+
+Syntax: 
+SELECT (column1,column2) FROM (Table Name)WHERE condition;
+
 ### 1.Write a SQL query to identify customers who do not belong to the city of 'New York' or have a grade value that exceeds 100. Return customer_id, cust_name, city, grade, and salesman_id.
 ![Screenshot 2024-04-24 143107](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/f122f32d-1c14-414b-b8de-77e2c5f45d66)
 
-#### Program
+#### Query
 ```
 SELECT customer_id, cust_name, city, grade, salesman_id
 FROM customer
@@ -18,7 +59,7 @@ WHERE grade = 100;
 ### 2.write a SQL query to find details of all orders with a purchase amount less than 200 or exclude orders with an order date greater than or equal to '2012-02-10' and a customer ID less than 3009. Return ord_no, purch_amt, ord_date, customer_id and salesman_id.
 ![Screenshot 2024-04-24 143227](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/7308b320-e9d7-4a7e-b247-e9ffb0ffac9e)
 
-#### Program
+#### Query
 ```
 SELECT ord_no, purch_amt, ord_date, customer_id, salesman_id
 FROM orders
@@ -30,7 +71,7 @@ WHERE (purch_amt < 200) OR (ord_date <= '2012-10-10' AND customer_id >= 3009);
 ### 3.Write a SQL query to find the details of those salespeople who live in cities other than Paris and Rome. Return salesman_id, name, city, commission.
 ![Screenshot 2024-04-24 143332](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/25db1b42-a408-4732-b827-14f541edb10c)
 
-#### Program
+#### Query
 ```
 SELECT salesman_id, name, city, commission
 FROM salesman
@@ -42,7 +83,7 @@ WHERE city NOT IN ('Paris', 'Rome');
 ### 4.Write a SQL query to find customers who are either from the city 'New York' or who do not have a grade greater than 100. Return customer_id, cust_name, city, grade, and salesman_id.
 ![Screenshot 2024-04-24 143440](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/08cde6ef-d0d9-4aa1-afaf-375345d4044b)
 
-#### Program
+#### Query
 ```
 SELECT customer_id, cust_name, city, grade, salesman_id
 FROM customer
@@ -55,7 +96,7 @@ WHERE city = 'New York' OR grade <= 100;
 ![Screenshot 2024-04-24 182156](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/586ad1b6-ffe2-43f0-918e-bead4647f4e2)
 
 
-#### Program
+#### Query
 ```
 UPDATE Products
 SET reorder_lvl = CAST(reorder_lvl * 0.7 AS INT)
@@ -67,7 +108,7 @@ WHERE cost_price > 50 AND quantity < 100;
 ### 6.Write a SQL statement to Increase the selling price per unit by 5% for product ID 15 in the sales table where sale date is '2023-01-31'.
 ![Screenshot 2024-04-24 182331](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/45eedd45-6ba9-4c7a-acd7-8d15d2e797f1)
 
-#### Program
+#### Query
 ```
 UPDATE sales
 SET sell_price = sell_price * 1.05
@@ -79,7 +120,7 @@ WHERE product_id = 15 AND sale_date = '2023-01-31';
 ### 7.Increase the reorder level by 30% for products from 'Food' category having quantity in stock less than 50% of existing reorder level in the products table
 ![Screenshot 2024-04-24 182440](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/706628ef-1480-4f36-bd38-598d98bd8552)
 
-#### Program
+#### Query
 ```
 UPDATE products
 SET reorder_lvl = ROUND(reorder_lvl * 1.3)
@@ -91,7 +132,7 @@ WHERE category = 'Food' AND quantity < 0.5 * reorder_lvl;
 ### 8.Write a SQL query to Delete customers from 'customer' table where 'GRADE' is greater than or equal to 2.
 ![Screenshot 2024-04-24 182557](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/483eb068-02ac-4c5f-beb8-28e9991c156d)
 
-#### Program
+#### Query
 ```
 DELETE FROM customer
 WHERE grade >= 2;
@@ -101,7 +142,7 @@ WHERE grade >= 2;
 ### 9.Write a SQL query to Delete all Doctors whose Specialization is either 'Pediatrics' or 'Cardiology' and Last Name is Brown.
 ![Screenshot 2024-04-24 182709](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/0433c207-bac5-4f50-a730-babfeeaa4e5a)
 
-#### Program
+#### Query
 ```
 DELETE FROM Doctors
 WHERE specialization IN ('Pediatrics', 'Cardiology') AND last_name = 'Brown';
@@ -112,7 +153,7 @@ WHERE specialization IN ('Pediatrics', 'Cardiology') AND last_name = 'Brown';
 ### 10.Write a SQL query to delete a specific doctor from Doctors table whose ID is 1.
 ![Screenshot 2024-04-24 182810](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/852e3d26-b5c2-4d93-92d5-4bc3a425d7d3)
 
-#### Program
+#### Query
 ```
 DELETE FROM Doctors
 WHERE doctor_id = 1;
