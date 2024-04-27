@@ -1,7 +1,7 @@
 # DBMS-Expt03
 
 ## Aim
-To learn and practice the uses of Update , Delete and Select in SQL.
+To Study and Implement DML Commands.
 
 ## Theory
 1. INSERT INTO: This is used to add records into a relation. 
@@ -163,4 +163,4 @@ WHERE doctor_id = 1;
 ![Screenshot 2024-04-24 182822](https://github.com/Harsayazheni/DBMS-Expt03/assets/118708467/d1dc6bb6-a2e7-4fd9-a709-fc39244609eb)
 
 ## Result
-Thus , Create , Alter and Insert in SQL is practiced successfully.
+Thus , To Study and Implement DML Commands is done successfully.
